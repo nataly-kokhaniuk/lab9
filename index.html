@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Friends in social networks</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="icon"
+      href="resources/team_people_icon_176892.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div id="image-container" class="image-container">
+      <img
+        src="resources/team_people_icon_176892.png"
+        alt="Bottom Image"
+        class="bottom-image"
+      />
+    </div>
+    <div id="container-autorization" class="container">
+      <div class="tabs">
+        <button
+          id="signuptab"
+          class="tab-button active"
+          onclick="openTab('signup');"
+        >
+          Signup
+        </button>
+        <button id="logintab" class="tab-button" onclick="openTab('login');">
+          Login
+        </button>
+      </div>
+      <div id="signup" class="tab-content">
+        <h2>Create an account</h2>
+        <form id="signup-form" onsubmit="submitSignupForm(event)">
+          <div class="input-container">
+            <label for="signup-username">Username</label>
+            <input
+              type="text"
+              id="signup-username"
+              placeholder="Enter username"
+            />
+            <div id="username-error" class="error-message"></div>
+          </div>
+          <div class="input-container">
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" placeholder="Enter email" />
+            <div id="email-error" class="error-message"></div>
+          </div>
+          <div class="password-container">
+            <label for="signup-password">Password</label>
+            <input
+              type="password"
+              id="signup-password"
+              placeholder="Enter password"
+            />
+            <span
+              class="toggle-password"
+              onclick="togglePassword('signup-password')"
+              >&#128065;</span
+            >
+            <div id="password-error" class="error-message"></div>
+          </div>
+          <div class="password-container">
+            <label for="signup-confirm-password">Confirm Password</label>
+            <input
+              type="password"
+              id="signup-confirm-password"
+              placeholder="Enter password"
+            />
+            <span
+              class="toggle-password"
+              onclick="togglePassword('signup-confirm-password')"
+              >&#128065;</span
+            >
+            <div id="confirm-password-error" class="error-message"></div>
+          </div>
+          <div class="button-container">
+            <button type="submit" class="btn">Signup</button>
+          </div>
+        </form>
+        <div
+          id="success-registration"
+          class="success-registration"
+          style="display: none"
+        >
+          <p style="color: green">Successful Registration</p>
+        </div>
+      </div>
+
+      <div id="login" class="tab-content" style="display: none">
+        <h2>Login here</h2>
+        <form id="login-form" onsubmit="submitLoginForm(event)">
+          <div class="input-container">
+            <label for="login-username">Username</label>
+            <input
+              type="text"
+              id="login-username"
+              placeholder="Enter username"
+            />
+            <div id="login-username-error" class="error-message"></div>
+          </div>
+          <div class="password-container">
+            <label for="login-password">Password</label>
+            <input
+              type="password"
+              id="login-password"
+              placeholder="Enter password"
+            />
+            <span
+              class="toggle-password"
+              onclick="togglePassword('login-password')"
+              >&#128065;</span
+            >
+            <div id="login-password-error" class="error-message"></div>
+          </div>
+          <div class="button-container">
+            <button type="submit" class="btn">Login</button>
+          </div>
+        </form>
+      </div>
+      <div id="loader" class="loader" style="display: none">
+        <img src="resources/loader.gif" alt="Loading..." />
+      </div>
+    </div>
+    <div id="container-friends" class="container-friends" style="display: none">
+      <div class="menu-bar">
+        <div class="left-menu">
+          <div>
+            <img id="user-logo"
+              class="logo"
+              src="resources/team_people_icon_176892.png"
+              alt="User"
+            />
+          </div>
+          <button class="burger-menu"><img src="resources/filter.png" alt="Filter Icon" class="icon"></button>
+          <input type="text" class="search-bar" placeholder="🔍︎" />
+        </div>
+        <div class="right-menu">
+          <img src="resources/user.png" alt="User Icon" class="user-icon" />
+          <span id="user-info">??? </span>
+          <button id="logout-btn" class="logout-btn">Logout</button>
+        </div>
+      </div>
+      <div class="content">
+				<aside class="sidebar">
+					<div class="sort-section">
+						<h4>Sort</h4>
+						<div class="sort-options">
+							<label><input type="radio" name="sort" value="none" checked> No sorting</label>
+							<label><input type="radio" name="sort" value="name-asc"> By name A-Z</label>
+							<label><input type="radio" name="sort" value="name-desc"> By name Z-A</label>
+							<label><input type="radio" name="sort" value="date-asc"> By registration date (oldest first)</label>
+							<label><input type="radio" name="sort" value="date-desc"> By registration date (newest first)</label>
+						</div>
+					</div>
+					<div class="filter-section">
+						<h4>Filter</h4>
+						<div class="filter-options">
+							
+							<input type="number" id="min-age" name="min-age" placeholder="Min age" min="18" max="120" value=""> - 
+							<input type="number" id="max-age" name="max-age" placeholder="Max age" min="18" max="120" value="">
+							<input type="text" id="name" name="name" placeholder="Name">
+							<input type="text" id="address" name="address" placeholder="Address">
+							<input type="text" id="email" name="email" placeholder="Email">
+						</div>
+					</div>
+					<button id="filter-btn" class="filter-btn">Sort & Filter</button>
+					<button id="clear-filter-btn" class="filter-btn">Clear filters</button>
+				</aside>
+				
+        <main class="main-content">
+          <!-- Контент буде додано динамічно -->
+        </main>
+      </div>
+    </div>
+    <script src="scripts.js"></script>
+    <div class="scrollup">
+      <img src="resources/up-arrow-icon.png" alt="Up-arrow-icon" />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,434 @@
+:root {
+  --main-bg-color: #e0f7fa;
+  --second-bg-color: white;
+  --main-text-color: black;
+  --primary-button-color: #00bcd4;
+  --primary-button-hover-color: #0097a7;
+  --box-shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box; /* Включає padding і border у загальну ширину елемента */
+}
+
+body {
+  background-color: var(--main-bg-color);
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+.image-container {
+  position: fixed;
+  bottom: 0;
+  left: 20px;
+  width: calc(100% - 20px); /* Full width minus the left margin */
+  max-height: 100vh; /* Ensure it doesn't exceed the viewport height */
+  display: flex;
+  justify-content: flex-start; /* Align the image to the left */
+  pointer-events: none; /* Make sure it doesn't block clicks */
+  z-index: -4;
+}
+.bottom-image {
+  max-height: 100%; /* Ensure it fits within the viewport height */
+  max-width: 55%; /* Ensure it doesn't exceed the width minus the left margin */
+  height: auto;
+  width: auto;
+}
+.container {
+  background-color: var(--second-bg-color);
+  transform: translateY(30px);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 350px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  background-color: var(--second-bg-color);
+  border: 1px solid var(--main-bg-color);
+  padding: 10px;
+  cursor: pointer;
+  width: 50%;
+  text-align: center;
+  font-size: 16px;
+}
+
+.tab-button.active {
+  background-color: var(--main-bg-color);
+  border-bottom: 2px solid var(--primary-button-color);
+  color: var(--primary-button-color);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+h2 {
+  margin: 0 0 20px;
+  color: var(--main-text-color);
+}
+
+.label-container,
+.input-container,
+.password-container,
+.button-container {
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--main-text-color);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Включає padding і border у загальну ширину елемента */
+}
+
+.password-container {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 20px;
+  top: 35px;
+  transform: translateY(
+    -5px
+  ); /* Зміщує елемент вгору на половину його висоти */
+  cursor: pointer;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--primary-button-color);
+  color: var(--second-bg-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  box-sizing: border-box; /* Включає padding і border у загальну ширину елемента */
+}
+
+.btn:hover {
+  background-color: var(--primary-button-hover-color);
+}
+.loader {
+  display: block;
+  transform: translateX(+35%);
+  /* width: 100%; */
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+
+/* друзі*/
+.container-friends {
+  width: 100vw;
+  padding: 0;
+  margin: 0;
+}
+.menu-bar {
+  display: flex;
+  justify-content: space-between;
+  /*align-items: center;*/
+  padding: 10px 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.left-menu {
+  display: flex;
+  align-items: center;
+}
+
+.burger-menu {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.search-bar {
+  margin-left: 20px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.right-menu {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.user-icon {
+  height: 50px;
+  width: auto;
+  margin-right: 10px;
+}
+.burger-menu {
+  padding: 10px;
+  background-color: var(--primary-button-color);
+  color: var(--second-bg-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.logout-btn {
+  padding: 10px;
+  background-color: var(--primary-button-color);
+  color: var(--second-bg-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.logout-btn:hover {
+  background-color: var(--primary-button-hover-color);
+}
+
+.content {
+  display: flex;
+  margin-top: 95px;
+}
+.sidebar {
+  display: none;
+  background-color: #ffffff;
+  padding: 20px;
+  margin-right: 20px;
+  width: 30%;
+  min-height: 100vh;
+
+  border-radius: 8px;
+  box-shadow: 4px 0px 8px rgba(0, 0, 0, 0.1);
+}
+.sidebar.active {
+  display: block;
+}
+
+.filter-btn {
+  padding: 10px;
+  background-color: var(--primary-button-color);
+  color: var(--second-bg-color);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.filter-btn:hover {
+  background-color: var(--primary-button-hover-color);
+}
+
+.main-content {
+  background-color: var(--main-bg-color);
+
+  padding: 20px;
+  width: 100%;
+}
+.logo {
+  height: 60px;
+  width: auto;
+  cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  .menu-bar {
+    display: flex;
+    flex-direction: column; /* Зміна напрямку відображення на колонку */
+  }
+
+  .left-menu {
+    display: flex;
+    /*flex-direction: column;*/
+    justify-content: center;
+    text-align: center;
+    order: 1; /* Зміна порядку відображення */
+    /* Додатковий відступ між рядками */
+  }
+
+  .right-menu {
+    order: 2; /* Зміна порядку відображення */
+    display: flex;
+    text-align: center;
+  }
+
+  .search-bar {
+    width: 100%; /* Розширення пошукового поля на всю ширину */
+  }
+
+  .logo {
+    width: 15vw;
+    height: auto;
+    /* Додатковий відступ між рядками */
+  }
+
+  .burger-menu {
+    order: 2; /* Зміна порядку відображення */
+  }
+  .container-friends {
+    display: flex;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 125px;
+  }
+  .sidebar.active {
+    width: 100vw;
+    height: auto;
+  }
+  .main-content {
+    width: 100vw;
+  }
+}
+/* Стилі карток*/
+
+.user-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--second-bg-color);
+  padding: 20px;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px var(--box-shadow-color);
+}
+
+.user-photo {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 5px;
+}
+
+.user-info {
+  text-align: center;
+  width: 100%;
+}
+.user-info h3 {
+  color: var(--second-bg-color); /* Змінюємо колір тексту */
+  background-color: var(--primary-button-color); /* Змінюємо колір фону */
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.user-info div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+.user-info div span {
+  text-align: left; /* Вирівнюємо текст по лівому краю */
+  white-space: normal; /* Дозволяємо переносити текст */
+}
+.user-info .email {
+  font-size: 13px; /* Початковий розмір шрифту */
+  cursor: pointer; /* Зробити текст клікабельним */
+}
+
+.user-info .icon {
+  margin-right: 10px;
+}
+.scrollup {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+/*side-bar*/
+
+.sort-section,
+.filter-section {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  padding-top: 0;
+}
+.h4 {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+.sort-options label,
+.filter-options label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.filter-options input[type="number"] {
+  width: calc(50% - 8px); /* Залишаємо місце для лейблів */
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.filter-options input[type="text"] {
+  width: calc(100%); /* Залишаємо місце для лейблів */
+}
+
+@media (min-width: 769px) {
+  .main-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .user-card {
+    width: calc(33% - 20px); /* 3 cards per row with sidebar */
+  }
+}
+
+@media (max-width: 768px) {
+  .user-card {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .user-info .email {
+    font-size: 10px; /* Зменшений розмір шрифту */
+  }
+}
